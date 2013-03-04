@@ -66,7 +66,9 @@ phy_result_t phy_tx(phy_tx_cfg_t* cfg)
 	temp.eirp = 0;
 	temp.lqi = 0;
 
-	log_phy_rx_res(&temp);
+	#ifdef LOG_PHY_ENABLED
+		log_phy_rx_res(&temp);
+	#endif
 
 	return PHY_OK;
 }
