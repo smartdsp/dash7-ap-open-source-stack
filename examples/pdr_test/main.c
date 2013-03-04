@@ -42,7 +42,7 @@ static u8 tx_mode_enabled = 0;
 static mode_t mode = mode_idle;
 
 dll_channel_scan_t scan_cfg1 = {
-		0x10,
+		CHANNEL_ID,
 		FrameTypeForegroundFrame,
 		1000, // TODO increase this after stack supports receiving multiple packets during one scan
 		0
@@ -84,6 +84,7 @@ void rx_callback(dll_rx_res_t* rx_res)
 	uart_transmit_data(SYNC_WORD);
 	uart_transmit_message(foreground_frame->source_id_header, 8);
 	uart_transmit_message(foreground_frame->payload, 2);
+	uart_transmit_message(&rx_res->rssi, 1);
 	led_toggle(3);
 }
 
