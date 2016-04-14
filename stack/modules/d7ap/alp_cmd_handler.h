@@ -30,6 +30,7 @@
 
 #define ALP_CMD_HANDLER_ID 'D'
 
+typedef void (*alp_cmd_handler_appl_itf_callback)(uint8_t* alp_command, uint8_t alp_command_length);
 
 ///
 /// \brief Shell command handler for ALP interface
@@ -51,5 +52,11 @@ void alp_cmd_handler_process_fs_itf(uint8_t* alp_command, uint8_t alp_command_le
 /// \param alp_command_size
 ///
 void alp_cmd_handler_output_unsollicited_response(d7asp_result_t d7asp_result, uint8_t *alp_command, uint8_t alp_command_size);
+
+///
+/// \brief Set the callback which will be called when an ALP command is received for the application interface
+/// \param cb
+///
+void alp_cmd_handler_set_appl_itf_callback(alp_cmd_handler_appl_itf_callback cb);
 
 #endif // ALP_CMD_HANDLER_H
