@@ -38,6 +38,7 @@
 #include "hwuart.h"
 #include "fifo.h"
 #include "alp_cmd_handler.h"
+#include "version.h"
 
 static d7asp_init_args_t d7asp_init_args;
 
@@ -82,6 +83,6 @@ void bootstrap()
 
     fs_write_dll_conf_active_access_class(0); // use access class 0 for scan automation
 
-    lcd_write_string("started");
+    lcd_write_string("GW %s", _GIT_SHA1);
 }
 
